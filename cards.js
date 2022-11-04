@@ -1,17 +1,9 @@
 import {getResource} from '../services/services';
 
 function cards() {
- // Використовуєм класи для карточок
 
-    // 1. Для створення класу карточки товару нам знадобиться:
-    // 1) src картинки
-    // 2) альтернативний текст (alt) який буде підгружатись якщо картинка не загрузиться
-    // 3) title (заголовок картинки)
-    // 4) опис
-    // 5) ціна (price)
     class MenuCard {
         constructor(src, alt, title, descr, price, parentSelector, ...classes) {
-            // 2. Властивості які знадобляться на даному етапі
             this.src = src;
             this.alt = alt;
             this.title = title;
@@ -23,15 +15,11 @@ function cards() {
             this.changeToUAH();
         }
 
-        // 3. Створюєм метод по конвертації валют
+
         changeToUAH() {
             this.price = this.price * this.transfer;
         }
-        // 4. Формування верстки
-        // 1) створити елемент
-        // 2) в нього помістити певну верстку
-        // 3) доповнити верстку даними які приходять як аргументи 
-        // 4) помістити цей елемент на сторінку
+
         render() {
             const element = document.createElement('div');
 
@@ -63,7 +51,7 @@ function cards() {
         .then(data => {
             data.forEach(({img, altimg, title, descr, price}) => {
                 new MenuCard(img, altimg, title, descr, price, '.menu .container').render(); // викор синтаксис деструктуризації обєкта
-                // деструктуризація обєкта - це коли з обєкта витягаєм окремі властивості в якості окремої змінної
+
             });
         });
     // 2 варіант
